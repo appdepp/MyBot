@@ -3,7 +3,7 @@ from telegram import Update, KeyboardButton, ReplyKeyboardMarkup
 from telegram.ext import ApplicationBuilder, MessageHandler, CommandHandler, filters, ContextTypes
 
 # токен бота
-TOKEN = '8183641238:AAFCkwm9ovfRoZ2LsPSWyGG3O30sENgAo-k'
+TOKEN = '567656765'
 
 # OpenWeather API
 API_KEY = '29b7ad9aecc4a023c3a2601e3242b851'
