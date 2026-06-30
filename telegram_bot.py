@@ -1,12 +1,14 @@
+import os
+
 import requests
 from telegram import Update, KeyboardButton, ReplyKeyboardMarkup
 from telegram.ext import ApplicationBuilder, MessageHandler, CommandHandler, filters, ContextTypes
 
-# токен бота
-TOKEN = '567656765'
+# Telegram bot token
+TOKEN = os.getenv("TELEGRAM_BOT_TOKEN")
 
 # OpenWeather API
-API_KEY = '29b7ad9aecc4a023c3a2601e3242b851'
+API_KEY = os.getenv("OPENWEATHER_API_KEY")
 
 
 # 1 сообщение
@@ -82,6 +84,11 @@ def get_current_weather_by_city(city_name):
 
 # функция для запуска бота
 def main():
+    if not TOKEN:
+        raise RuntimeError("TELEGRAM_BOT_TOKEN environment variable is required.")
+    if not API_KEY:
+        raise RuntimeError("OPENWEATHER_API_KEY environment variable is required.")
+
     application = ApplicationBuilder().token(TOKEN).build()
 
     application.add_handler(CommandHandler("start", start))
